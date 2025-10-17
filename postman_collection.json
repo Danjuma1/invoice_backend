@@ -1,0 +1,229 @@
+{
+  "info": {
+    "name": "Invoicing API",
+    "description": "Collection for testing the Django Invoicing Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Acme Corporation\",\n  \"email\": \"contact@acme.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/customers/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "customers", ""]
+            }
+          }
+        },
+        {
+          "name": "List All Customers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/customers/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "customers", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Customer Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/customers/1/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "customers", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "Create Invoice with Items",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer\": 1,\n  \"issue_date\": \"2024-01-15\",\n  \"due_date\": \"2024-02-15\",\n  \"status\": \"pending\",\n  \"items\": [\n    {\n      \"description\": \"Web Development Services\",\n      \"quantity\": 5,\n      \"unit_price\": \"150.00\"\n    },\n    {\n      \"description\": \"UI/UX Design\",\n      \"quantity\": 3,\n      \"unit_price\": \"100.00\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", ""]
+            }
+          }
+        },
+        {
+          "name": "List All Invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", ""]
+            }
+          }
+        },
+        {
+          "name": "List Invoices - Filter by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/?status=pending",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", ""],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Invoice Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/1/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Update Invoice Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"paid\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/1/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Mark Invoice as Paid",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/1/mark-paid/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", "1", "mark-paid", ""]
+            }
+          }
+        },
+        {
+          "name": "Create Invoice - No Items (Error)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer\": 1,\n  \"issue_date\": \"2024-01-15\",\n  \"due_date\": \"2024-02-15\",\n  \"items\": []\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", ""]
+            }
+          }
+        },
+        {
+          "name": "Create Invoice - Invalid Dates (Error)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer\": 1,\n  \"issue_date\": \"2024-02-15\",\n  \"due_date\": \"2024-01-15\",\n  \"items\": [\n    {\n      \"description\": \"Service\",\n      \"quantity\": 1,\n      \"unit_price\": \"100.00\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/invoices/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "invoices", ""]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

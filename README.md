@@ -152,7 +152,3 @@ Access the admin panel at `http://localhost:8000/admin/` with your superuser cre
 ## Built By
 
 Habeebulllah Akorede 
-
-## License
-
-MIT
