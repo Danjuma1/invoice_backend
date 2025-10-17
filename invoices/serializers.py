@@ -41,21 +41,27 @@ class InvoiceCreateUpdateSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
 
     def validate_items(self, value):
-        # Validates that at least one item is provided.
+        # Validate that at least one item is provided.
         if not value:
             raise serializers.ValidationError('An invoice must have at least one line item.')
         return value
 
     def validate(self, data):
-        # Validates that due_date is not before issue_date.
-        if data['due_date'] < data['issue_date']:
+        # Validate that due_date is not before issue_date.
+        # Get existing values if not provided in update
+        instance = self.instance
+        due_date = data.get('due_date', instance.due_date if instance else None)
+        issue_date = data.get('issue_date', instance.issue_date if instance else None)
+        
+        # Only validate if both dates are present
+        if due_date and issue_date and due_date < issue_date:
             raise serializers.ValidationError(
                 'Due date must be on or after the issue date.'
             )
         return data
 
     def create(self, validated_data):
-        # Creates invoice with nested items.
+        # Create invoice with nested items.
         items_data = validated_data.pop('items')
         invoice = Invoice.objects.create(**validated_data)
         
@@ -65,7 +71,7 @@ class InvoiceCreateUpdateSerializer(serializers.ModelSerializer):
         return invoice
 
     def update(self, instance, validated_data):
-        # Updates invoice (items are read-only during update).
+        # Update invoice (items are read-only during update).
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
         instance.save()
