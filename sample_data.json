@@ -1,0 +1,173 @@
+[
+  {
+    "model": "invoices.customer",
+    "pk": 1,
+    "fields": {
+      "name": "Acme Corporation",
+      "email": "billing@acme.com",
+      "created_at": "2024-01-10T09:00:00Z"
+    }
+  },
+  {
+    "model": "invoices.customer",
+    "pk": 2,
+    "fields": {
+      "name": "Tech Solutions Inc",
+      "email": "contact@techsolutions.com",
+      "created_at": "2024-01-11T10:30:00Z"
+    }
+  },
+  {
+    "model": "invoices.customer",
+    "pk": 3,
+    "fields": {
+      "name": "Design Studio LLC",
+      "email": "hello@designstudio.com",
+      "created_at": "2024-01-12T14:15:00Z"
+    }
+  },
+  {
+    "model": "invoices.invoice",
+    "pk": 1,
+    "fields": {
+      "customer": 1,
+      "issue_date": "2024-01-15",
+      "due_date": "2024-02-15",
+      "status": "pending",
+      "created_at": "2024-01-15T09:00:00Z"
+    }
+  },
+  {
+    "model": "invoices.invoice",
+    "pk": 2,
+    "fields": {
+      "customer": 1,
+      "issue_date": "2024-01-20",
+      "due_date": "2024-02-20",
+      "status": "paid",
+      "created_at": "2024-01-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "invoices.invoice",
+    "pk": 3,
+    "fields": {
+      "customer": 2,
+      "issue_date": "2024-01-18",
+      "due_date": "2024-02-01",
+      "status": "overdue",
+      "created_at": "2024-01-18T11:30:00Z"
+    }
+  },
+  {
+    "model": "invoices.invoice",
+    "pk": 4,
+    "fields": {
+      "customer": 3,
+      "issue_date": "2024-01-22",
+      "due_date": "2024-02-22",
+      "status": "pending",
+      "created_at": "2024-01-22T13:45:00Z"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 1,
+    "fields": {
+      "invoice": 1,
+      "description": "Website Development",
+      "quantity": 40,
+      "unit_price": "100.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 2,
+    "fields": {
+      "invoice": 1,
+      "description": "API Integration",
+      "quantity": 20,
+      "unit_price": "75.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 3,
+    "fields": {
+      "invoice": 1,
+      "description": "Testing & QA",
+      "quantity": 10,
+      "unit_price": "50.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 4,
+    "fields": {
+      "invoice": 2,
+      "description": "Cloud Infrastructure Setup",
+      "quantity": 1,
+      "unit_price": "2500.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 5,
+    "fields": {
+      "invoice": 2,
+      "description": "Maintenance (3 months)",
+      "quantity": 3,
+      "unit_price": "300.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 6,
+    "fields": {
+      "invoice": 3,
+      "description": "Custom Software Development",
+      "quantity": 80,
+      "unit_price": "125.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 7,
+    "fields": {
+      "invoice": 3,
+      "description": "Documentation",
+      "quantity": 5,
+      "unit_price": "60.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 8,
+    "fields": {
+      "invoice": 4,
+      "description": "Logo Design",
+      "quantity": 1,
+      "unit_price": "800.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 9,
+    "fields": {
+      "invoice": 4,
+      "description": "Brand Guidelines Document",
+      "quantity": 1,
+      "unit_price": "500.00"
+    }
+  },
+  {
+    "model": "invoices.invoiceitem",
+    "pk": 10,
+    "fields": {
+      "invoice": 4,
+      "description": "Social Media Templates",
+      "quantity": 10,
+      "unit_price": "100.00"
+    }
+  }
+]
