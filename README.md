@@ -23,8 +23,8 @@ _Being an assessment submitted to DevRecruit for the position of Django Fullstac
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
-cd invoicing_project
+git clone https://github.com/Danjuma1/invoice_backend.git
+cd invoice_backend
 ```
 
 ### 2. Create and Activate Virtual Environment
